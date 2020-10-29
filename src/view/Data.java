@@ -64,8 +64,8 @@ public class Data{
 
 
         url = getClass().getResource("/assets/");
-        bgImage = new Image(url+"Menubackground.png",maxWidth,maxHeight,true,true);
-        playBgImage = new Image(url+"ChessBoard.png",maxWidth,maxHeight,true,true);
+        bgImage = new Image(url+"BackGround-2-2.png",maxWidth,maxHeight,true,true);
+        playBgImage = new Image(url+"GameBg-2.png",maxWidth,maxHeight,true,true);
         playAsBlack = new Image(url+"playAsBlack.png",200,100,true,true);
         playAsWhite= new Image(url+"playAsWhite.png",200,100,true,true);
         pw = new Image(url+"Pawn_White.png",squareSIze,squareSIze,true,true);
@@ -109,6 +109,7 @@ public class Data{
     }
 
     public void move(Cell cell) {
+        System.out.println("check is selected");
         if(move1 == null) {
             move1 = cell;
             nextPossibleMoves = countLegalMoves.legalMoves(move1.row,move1.column,chessBoard.board,cstChecker);
@@ -245,8 +246,6 @@ public class Data{
         for(int i=1;i<=8;i++) {
             for(int j=1;j<=8;j++) {
                 int a=i+j;
-                chessBoard.show();
-                System.out.println();
                 if((a%2)==0) {
                     boardView[i][j].setStyle("-fx-background-color: #a47c5c;");
                 }
@@ -296,6 +295,7 @@ public class Data{
                 }
             }
         }
+        chessBoard.show();
     }
     public void showGameOverWindow() {
         Stage finish = new Stage();

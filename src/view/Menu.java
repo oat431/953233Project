@@ -23,9 +23,9 @@ public class Menu extends GridPane {
         setVgap(20);
         setHgap(100);
         add(playAs,5,5);
-        add(white,5,8);
-        add(black,5,11);
-        BackgroundImage backgroundImage = new BackgroundImage(data.bgImage,BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
+        add(white,6,18);
+        add(black,6,22);
+        BackgroundImage backgroundImage = new BackgroundImage(data.bgImage,BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
         setBackground(new Background(backgroundImage));
 
         white.setOnAction(actionEvent -> data.setPlayerWhite());

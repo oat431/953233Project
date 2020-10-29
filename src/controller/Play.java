@@ -31,7 +31,7 @@ public class Play extends GridPane {
             updateBoard();
         }
     }
-    void drawBoard() {
+    public void drawBoard() {
         int k=1;
         add(pc,0,0);
         for(int i=0;i<8;i++) {
@@ -56,7 +56,7 @@ public class Play extends GridPane {
         pc.setTextFill(Color.web("#ffffff"));
         pc.setFont(Font.font("Arial", 50));
     }
-    void updateBoard() {
+    public void updateBoard() {
         for(int i=1;i<=8;i++) {
             for(int j=1;j<=8;j++) {
                 int a=i+j;

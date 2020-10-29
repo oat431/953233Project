@@ -2,14 +2,13 @@ package controller;
 import model.*;
 import view.*;
 public class LegalMoves2{
-    Data data;
+    public Data data;
     public LegalMoves2(Data data)
     {
         this.data=data;
     }
 
-    public Cell[] legalMoves(int row,int col ,String board[][])
-    {
+    public Cell[] legalMoves(int row,int col ,String board[][]) {
         Cell legal[] = new Cell[100];
         String str=board[row][col];
         char ch = str.charAt(0);
@@ -18,452 +17,356 @@ public class LegalMoves2{
 
         //if(kingFree)
         {
-            if(ch == 'p')
-            {
+            if(ch == 'p') {
                 char playerColor;
-                if(data.player == data.WHITE)
-                {
+                if(data.player == data.WHITE) {
                     playerColor = 'w';
                 }
-                else
-                {
+                else {
                     playerColor = 'b';
                 }
-                if((color == playerColor)&&(row - 1 >= 1))
-                {
-                    if(board[row - 1][col].equals("##"))
-                    {
+                if((color == playerColor)&&(row - 1 >= 1)) {
+                    if(board[row - 1][col].equals("##")) {
                         legal[ind] = new Cell(row - 1, col);
                         ind++;
                     }
-                    if(col +1<=8)
-                    {
-                        if(!(board[row - 1][col+1].equals("##"))&&(board[row - 1][col+1].charAt(1)!=color))
-                        {
+                    if(col +1<=8) {
+                        if(!(board[row - 1][col+1].equals("##"))&&(board[row - 1][col+1].charAt(1)!=color)) {
                             legal[ind]=new Cell(row-1,col+1);
                             ind++;
                         }
                     }
-                    if(col -1>=1)
-                    {
-                        if(!(board[row - 1][col-1].equals("##"))&&(board[row - 1][col-1].charAt(1)!=color))
-                        {
+                    if(col -1>=1) {
+                        if(!(board[row - 1][col-1].equals("##"))&&(board[row - 1][col-1].charAt(1)!=color)) {
                             legal[ind]=new Cell(row-1,col-1);
                             ind++;
                         }
                     }
-                    if(row == 7)
-                    {
-                        if(board[row - 2][col].equals("##"))
-                        {
+                    if(row == 7) {
+                        if(board[row - 2][col].equals("##")) {
                             legal[ind] = new Cell(row - 2, col);
                             ind++;
                         }
                     }
                 }
-                else if((color != playerColor)&&(row + 1 <= 8))
-                {
-                    if(board[row + 1][col].equals("##"))
-                    {
+                else if((color != playerColor)&&(row + 1 <= 8)) {
+                    if(board[row + 1][col].equals("##")) {
                         legal[ind] = new Cell(row + 1, col);
                         ind++;
                     }
-                    if(col +1<=8)
-                    {
-                        if(!(board[row + 1][col+1].equals("##"))&&(board[row + 1][col+1].charAt(1)!=color))
-                        {
+                    if(col +1<=8) {
+                        if(!(board[row + 1][col+1].equals("##"))&&(board[row + 1][col+1].charAt(1)!=color)) {
                             legal[ind]=new Cell(row+1,col+1);
                             ind++;
                         }
                     }
-                    if(col -1>=1)
-                    {
-                        if(!(board[row + 1][col-1].equals("##"))&&(board[row + 1][col-1].charAt(1)!=color))
-                        {
+                    if(col -1>=1) {
+                        if(!(board[row + 1][col-1].equals("##"))&&(board[row + 1][col-1].charAt(1)!=color)) {
                             legal[ind]=new Cell(row+1,col-1);
                             ind++;
                         }
                     }
-                    if(row == 2)
-                    {
-                        if(board[row + 2][col].equals("##"))
-                        {
+                    if(row == 2) {
+                        if(board[row + 2][col].equals("##")) {
                             legal[ind] = new Cell(row + 2, col);
                             ind++;
                         }
                     }
                 }
             }
-            else if(ch == 'r')
-            {
-                for(int i=row+1;i<=8;i++)
-                {
-                    if(board[i][col].equals("##"))
-                    {
+            else if(ch == 'r') {
+                for(int i=row+1;i<=8;i++) {
+                    if(board[i][col].equals("##")) {
                         legal[ind]=new Cell(i,col);
                         ind++;
                     }
-                    else if(board[i][col].charAt(1)!=color)
-                    {
+                    else if(board[i][col].charAt(1)!=color) {
                         legal[ind]=new Cell(i,col);
                         ind++;
                         break;
                     }
-                    else if(board[i][col].charAt(1)==color)
-                    {
+                    else if(board[i][col].charAt(1)==color) {
                         break;
                     }
                 }
-                for(int i=row-1;i>=1;i--)
-                {
-                    if(board[i][col].equals("##"))
-                    {
+                for(int i=row-1;i>=1;i--) {
+                    if(board[i][col].equals("##")) {
                         legal[ind]=new Cell(i,col);
                         ind++;
                     }
-                    else if(board[i][col].charAt(1)!=color)
-                    {
+                    else if(board[i][col].charAt(1)!=color) {
                         legal[ind]=new Cell(i,col);
                         ind++;
                         break;
                     }
-                    else if(board[i][col].charAt(1)==color)
-                    {
+                    else if(board[i][col].charAt(1)==color) {
                         break;
                     }
                 }
-                for(int j=col+1;j<=8;j++)
-                {
-                    if(board[row][j].equals("##"))
-                    {
+                for(int j=col+1;j<=8;j++) {
+                    if(board[row][j].equals("##")) {
                         legal[ind]=new Cell(row,j);
                         ind++;
                     }
-                    else if(board[row][j].charAt(1)!=color)
-                    {
+                    else if(board[row][j].charAt(1)!=color) {
                         legal[ind]=new Cell(row,j);
                         ind++;
                         break;
                     }
-                    else if(board[row][j].charAt(1)==color)
-                    {
+                    else if(board[row][j].charAt(1)==color) {
                         break;
                     }
                 }
-                for(int j=col-1;j>=1;j--)
-                {
-                    if(board[row][j].equals("##"))
-                    {
+                for(int j=col-1;j>=1;j--) {
+                    if(board[row][j].equals("##")) {
                         legal[ind]=new Cell(row,j);
                         ind++;
                     }
-                    else if(board[row][j].charAt(1)!=color)
-                    {
+                    else if(board[row][j].charAt(1)!=color) {
                         legal[ind]=new Cell(row,j);
                         ind++;
                         break;
                     }
-                    else if(board[row][j].charAt(1)==color)
-                    {
+                    else if(board[row][j].charAt(1)==color) {
                         break;
                     }
                 }
             }
-            else if(ch == 'n')
-            {
+            else if(ch == 'n') {
                 int x[] = {2,2,-2,-2,1,1,-1,-1};
                 int y[] = {1,-1,1,-1,2,-2,2,-2};
-                for(int i=0;i<8;i++)
-                {
+                for(int i=0;i<8;i++) {
                     int a=row+y[i];
                     int b=col+x[i];
-                    if((a>=1)&&(a<=8)&&(b>=1)&&(b<=8))
-                    {
-                        if(board[a][b].equals("##"))
-                        {
+                    if((a>=1)&&(a<=8)&&(b>=1)&&(b<=8)) {
+                        if(board[a][b].equals("##")) {
                             legal[ind]=new Cell(a,b);
                             ind++;
                         }
-                        else if(board[a][b].charAt(1)!=color)
-                        {
+                        else if(board[a][b].charAt(1)!=color) {
                             legal[ind]=new Cell(a,b);
                             ind++;
                         }
                     }
                 }
             }
-            else if(ch == 'b')
-            {
+            else if(ch == 'b') {
                 int i,j;
                 i=row+1;
                 j=col+1;
-                for(;(i<=8)&&(j<=8);i++,j++)
-                {
+                for(;(i<=8)&&(j<=8);i++,j++) {
 
-                    if(board[i][j].equals("##"))
-                    {
+                    if(board[i][j].equals("##")) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                     }
-                    else if(board[i][j].charAt(1)!=color)
-                    {
+                    else if(board[i][j].charAt(1)!=color) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                         break;
                     }
-                    else if(board[i][j].charAt(1)==color)
-                    {
+                    else if(board[i][j].charAt(1)==color) {
                         break;
                     }
                 }
                 i=row+1;
                 j=col-1;
-                for(;(i<=8)&&(j>=1);i++,j--)
-                {
+                for(;(i<=8)&&(j>=1);i++,j--) {
 
-                    if(board[i][j].equals("##"))
-                    {
+                    if(board[i][j].equals("##")) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                     }
-                    else if(board[i][j].charAt(1)!=color)
-                    {
+                    else if(board[i][j].charAt(1)!=color) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                         break;
                     }
-                    else if(board[i][j].charAt(1)==color)
-                    {
+                    else if(board[i][j].charAt(1)==color) {
                         break;
                     }
                 }
                 i=row - 1;
                 j=col + 1;
 
-                for(;(i>=1)&&(j<=8);i--,j++)
-                {
+                for(;(i>=1)&&(j<=8);i--,j++) {
 
-                    if(board[i][j].equals("##"))
-                    {
+                    if(board[i][j].equals("##")) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                     }
-                    else if(board[i][j].charAt(1)!=color)
-                    {
+                    else if(board[i][j].charAt(1)!=color) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                         break;
                     }
-                    else if(board[i][j].charAt(1)==color)
-                    {
+                    else if(board[i][j].charAt(1)==color) {
                         break;
                     }
 
                 }
                 i=row-1;
                 j=col-1;
-                for(;(i>=1)&&(j>=1);i--,j--)
-                {
-                    if(board[i][j].equals("##"))
-                    {
+                for(;(i>=1)&&(j>=1);i--,j--) {
+                    if(board[i][j].equals("##")) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                     }
-                    else if(board[i][j].charAt(1)!=color)
-                    {
+                    else if(board[i][j].charAt(1)!=color) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                         break;
                     }
-                    else if(board[i][j].charAt(1)==color)
-                    {
+                    else if(board[i][j].charAt(1)==color) {
                         break;
                     }
 
                 }
             }
-            else if(ch == 'q')
-            {
-                for(int i=row+1;i<=8;i++)
-                {
-                    if(board[i][col].equals("##"))
-                    {
+            else if(ch == 'q') {
+                for(int i=row+1;i<=8;i++) {
+                    if(board[i][col].equals("##")) {
                         legal[ind]=new Cell(i,col);
                         ind++;
                     }
-                    else if(board[i][col].charAt(1)!=color)
-                    {
+                    else if(board[i][col].charAt(1)!=color) {
                         legal[ind]=new Cell(i,col);
                         ind++;
                         break;
                     }
-                    else if(board[i][col].charAt(1)==color)
-                    {
+                    else if(board[i][col].charAt(1)==color) {
                         break;
                     }
                 }
-                for(int i=row-1;i>=1;i--)
-                {
-                    if(board[i][col].equals("##"))
-                    {
+                for(int i=row-1;i>=1;i--) {
+                    if(board[i][col].equals("##")) {
                         legal[ind]=new Cell(i,col);
                         ind++;
                     }
-                    else if(board[i][col].charAt(1)!=color)
-                    {
+                    else if(board[i][col].charAt(1)!=color) {
                         legal[ind]=new Cell(i,col);
                         ind++;
                         break;
                     }
-                    else if(board[i][col].charAt(1)==color)
-                    {
+                    else if(board[i][col].charAt(1)==color) {
                         break;
                     }
                 }
-                for(int j=col+1;j<=8;j++)
-                {
-                    if(board[row][j].equals("##"))
-                    {
+                for(int j=col+1;j<=8;j++) {
+                    if(board[row][j].equals("##")) {
                         legal[ind]=new Cell(row,j);
                         ind++;
                     }
-                    else if(board[row][j].charAt(1)!=color)
-                    {
+                    else if(board[row][j].charAt(1)!=color) {
                         legal[ind]=new Cell(row,j);
                         ind++;
                         break;
                     }
-                    else if(board[row][j].charAt(1)==color)
-                    {
+                    else if(board[row][j].charAt(1)==color) {
                         break;
                     }
                 }
-                for(int j=col-1;j>=1;j--)
-                {
-                    if(board[row][j].equals("##"))
-                    {
+                for(int j=col-1;j>=1;j--) {
+                    if(board[row][j].equals("##")) {
                         legal[ind]=new Cell(row,j);
                         ind++;
                     }
-                    else if(board[row][j].charAt(1)!=color)
-                    {
+                    else if(board[row][j].charAt(1)!=color) {
                         legal[ind]=new Cell(row,j);
                         ind++;
                         break;
                     }
-                    else if(board[row][j].charAt(1)==color)
-                    {
+                    else if(board[row][j].charAt(1)==color) {
                         break;
                     }
                 }
                 int i,j;
                 i=row+1;
                 j=col+1;
-                for(;(i<=8)&&(j<=8);i++,j++)
-                {
+                for(;(i<=8)&&(j<=8);i++,j++) {
 
-                    if(board[i][j].equals("##"))
-                    {
+                    if(board[i][j].equals("##")) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                     }
-                    else if(board[i][j].charAt(1)!=color)
-                    {
+                    else if(board[i][j].charAt(1)!=color) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                         break;
                     }
-                    else if(board[i][j].charAt(1)==color)
-                    {
+                    else if(board[i][j].charAt(1)==color) {
                         break;
                     }
                 }
                 i=row+1;
                 j=col-1;
-                for(;(i<=8)&&(j>=1);i++,j--)
-                {
+                for(;(i<=8)&&(j>=1);i++,j--) {
 
-                    if(board[i][j].equals("##"))
-                    {
+                    if(board[i][j].equals("##")) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                     }
-                    else if(board[i][j].charAt(1)!=color)
-                    {
+                    else if(board[i][j].charAt(1)!=color) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                         break;
                     }
-                    else if(board[i][j].charAt(1)==color)
-                    {
+                    else if(board[i][j].charAt(1)==color) {
                         break;
                     }
                 }
                 i=row - 1;
                 j=col + 1;
 
-                for(;(i>=1)&&(j<=8);i--,j++)
-                {
+                for(;(i>=1)&&(j<=8);i--,j++) {
 
-                    if(board[i][j].equals("##"))
-                    {
+                    if(board[i][j].equals("##")) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                     }
-                    else if(board[i][j].charAt(1)!=color)
-                    {
+                    else if(board[i][j].charAt(1)!=color) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                         break;
                     }
-                    else if(board[i][j].charAt(1)==color)
-                    {
+                    else if(board[i][j].charAt(1)==color) {
                         break;
                     }
 
                 }
                 i=row-1;
                 j=col-1;
-                for(;(i>=1)&&(j>=1);i--,j--)
-                {
-                    if(board[i][j].equals("##"))
-                    {
+                for(;(i>=1)&&(j>=1);i--,j--) {
+                    if(board[i][j].equals("##")) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                     }
-                    else if(board[i][j].charAt(1)!=color)
-                    {
+                    else if(board[i][j].charAt(1)!=color) {
                         legal[ind]=new Cell(i,j);
                         ind++;
                         break;
                     }
-                    else if(board[i][j].charAt(1)==color)
-                    {
+                    else if(board[i][j].charAt(1)==color) {
                         break;
                     }
 
                 }
             }
         }
-        if(ch == 'k')
-        {
+        if(ch == 'k') {
             int x[] = {-1,-1,-1,0,0,1,1,1};
             int y[] = {-1,0,1,-1,1,-1,0,1};
-            for(int i=0;i<8;i++)
-            {
+            for(int i=0;i<8;i++) {
                 int a=row+y[i];
                 int b=col+x[i];
-                if((a>=1)&&(a<=8)&&(b>=1)&&(b<=8))
-                {
+                if((a>=1)&&(a<=8)&&(b>=1)&&(b<=8)) {
                     //if(data.legalMoves2.isFree(color,a,b))
                     {
-                        if(board[a][b].equals("##"))
-                        {
+                        if(board[a][b].equals("##")) {
                             legal[ind]=new Cell(a,b);
                             ind++;
                         }
-                        else if(board[a][b].charAt(1)!=color)
-                        {
+                        else if(board[a][b].charAt(1)!=color) {
                             legal[ind]=new Cell(a,b);
                             ind++;
                         }
@@ -475,7 +378,7 @@ public class LegalMoves2{
 
         return legal;
     }
-    boolean isFree(char pl,int row,int col,String board[][]) {
+    public boolean isFree(char pl,int row,int col,String board[][]) {
         char op;
         if(pl == 'w') {
             op='b';
