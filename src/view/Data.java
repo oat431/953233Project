@@ -64,8 +64,8 @@ public class Data{
 
 
         url = getClass().getResource("/assets/");
-        bgImage = new Image(url+"BackGround-2-2.png",maxWidth,maxHeight,true,true);
-        playBgImage = new Image(url+"GameBg-2.png",maxWidth,maxHeight,true,true);
+        bgImage = new Image(url+"MenuBG.png",maxWidth,maxHeight,true,true);
+        playBgImage = new Image(url+"GameBG.png",maxWidth,maxHeight,true,true);
         playAsBlack = new Image(url+"playAsBlack.png",200,100,true,true);
         playAsWhite= new Image(url+"playAsWhite.png",200,100,true,true);
         pw = new Image(url+"Pawn_White.png",squareSIze,squareSIze,true,true);
