@@ -296,6 +296,7 @@ public class Data{
             }
         }
         chessBoard.show();
+        System.out.println();
     }
     public void showGameOverWindow() {
         Stage finish = new Stage();
