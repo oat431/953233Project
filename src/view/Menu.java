@@ -1,5 +1,6 @@
 package view;
 
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
@@ -30,6 +31,18 @@ public class Menu extends GridPane {
 
         white.setOnAction(actionEvent -> data.setPlayerWhite());
         black.setOnAction(actionEvent -> data.setPlayerBlack());
+
+        white.setOnKeyPressed(e->{
+            if (e.getCode() == KeyCode.W) {
+                data.setPlayerWhite();
+            }
+        });
+
+        black.setOnKeyPressed(e->{
+            if (e.getCode() == KeyCode.B) {
+                data.setPlayerBlack();
+            }
+        });
     }
 
 }

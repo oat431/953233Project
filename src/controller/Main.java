@@ -13,8 +13,12 @@ public class Main extends Application {
     Scene menuScene;
     Data data;
     @Override
-    public void start(Stage window) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+    public void start(Stage window) {
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         window.setTitle("Chess");
         data = new Data(window);
         window.setWidth(data.maxWidth);

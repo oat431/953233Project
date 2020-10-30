@@ -13,8 +13,8 @@ public class Play extends GridPane {
     public Label pc;
     public Play(Data data) {
         this.data=data;
-        you=new Label("     YOU");
-        pc=new Label("   CPU       ");
+        you=new Label("     You");
+        pc=new Label("   COMPUTER       ");
     }
     public void set() {
         BackgroundImage backgroundImage = new BackgroundImage(data.playBgImage,BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);

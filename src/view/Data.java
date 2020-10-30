@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.net.URL;
@@ -23,6 +24,7 @@ public class Data{
     public double maxHeight;
     public double squareSIze;
     public Button boardView[][];
+    public Button surrender;
     public Cell move1,move2;
     public CountLegalMoves countLegalMoves;
     public LegalMoves2 legalMoves2;
@@ -45,7 +47,10 @@ public class Data{
     public char cpuColor;
     public char playerColor;
     public int moveCount;
+
+
     public Data(Stage stage) {
+        surrender = new Button("surrender");
         play = new Play(this);
         player = 0;
         pc =0;
@@ -242,7 +247,7 @@ public class Data{
         }
         updateBoard();
     }
-    public void updateBoard() {
+    public void updateBoard() throws ArrayIndexOutOfBoundsException{
         for(int i=1;i<=8;i++) {
             for(int j=1;j<=8;j++) {
                 int a=i+j;
@@ -302,6 +307,10 @@ public class Data{
         Stage finish = new Stage();
         finish.setScene(new Scene(new GameOverWindow()));
         finish.show();
+    }
+
+    public void setSurrender(){
+        showGameOverWindow();
     }
 
 }
